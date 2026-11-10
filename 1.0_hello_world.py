@@ -29,7 +29,6 @@ DELIVERABLE
 
 
 # Your code below
-# Store how many items to show
 print("Hello World")
 print("1. Lam")
 print("2. Lam")
