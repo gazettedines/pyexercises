@@ -24,7 +24,7 @@ DELIVERABLE
 
 # 1. In: Two values in the code, the message "Lam" (text) and the number of lines , 5 (number)
 # 2. Process: a for loop repeats the print 5 times, and adds the line number (1 to 5) in front of the message
-# 3. Out: on the scree, 5 lines from " 1. Lam" to "5. Lam", for me to read
+# 3. Out: on the screen, 5 lines from " 1. Lam" to "5. Lam", for me to read
 # 4. My message, and why: it's my name, because this is my first program, so I want it to say my name, like a signature.
 
 
