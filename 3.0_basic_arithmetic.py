@@ -24,10 +24,16 @@ DELIVERABLE
     This file, with your comments and your code.
 """
 
-# 1. In:
-# 2. Process:
-# 3. Out:
-# 4. What happens when the second number is zero, and why:
+# 1. In: two numbers typed by the user. input() gives text, so int() turns each answer 
+#    into a whole nummber
+# 2. Process: the program computes the sum, the difference, the product and the division
+#    of the two numbers. Before dividing, it checks that the second number is 
+#    not zero
+# 3. Out: on the screen, the two numbers, the four results: sum, diff, product, 
+#    division (or a message if the second number is zero)
+# 4. What happens when the second number is zero, and why: my program shows the message 
+#    "The second number is zero" instead of a result, because the other three 
+#    calculations still yield the correct results, the user doesn't lose them.
 
 
 # Your code below
