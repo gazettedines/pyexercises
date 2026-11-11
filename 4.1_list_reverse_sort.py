@@ -36,24 +36,30 @@ DELIVERABLE
 
 
 # Your code below
-# My list from exercise 4.0
-channels = ["Social media", "Modern trade", "General trade", "E-commerce",
-            "Email marketing", "Search ads", "TV", "KOL marketing"]
+number_1 = 2
+number_2 = 4
+number_3 = 6
+number_4 = 8
+number_5 = 10
 
-# 1. Alphabetical order: sorted() gives a NEW list, the original does not move
-print("A to Z:", sorted(channels))
+print("The first number is : ", number_1)
+print("The second number is : ", number_2)
+print("The third number is : ", number_3)
+print("The fourth number is : ", number_4)
+print("The fifth number is : ", number_5)
 
-# 2. Reverse alphabetical order: also a new list
-print("Z to A:", sorted(channels, reverse=True))
+numbers = [3, 5, 7, 9, 11, 13, 15, 17, 1, 2, 4, 6, 8, 10]
+print("The whole list is : ", numbers)
+print("The second item of the list is : ", numbers[1])
+print("The first item of the list is : ", numbers[0])
 
-# 3. The original order backwards: [::-1] makes a reversed copy
-print("Backwards:", channels[::-1])
+sorted_list = sorted(numbers)
+print("The sorted list is : ",  sorted_list)
 
-# 4. Shortest name first: .sort() changes the list IN PLACE,
-#    so I use it on a copy, never on the original
-copy = channels.copy()
-copy.sort(key=len)
-print("Shortest first:", copy)
-
-# Proof: the original list is still in the same order as in 4.0
-print("Original:", channels)
+removed_number = numbers.pop()
+print("The removed item is : ", removed_number)
+print("The list after removing the last item is : ", numbers)
+print("The sorted list after removing the last item is : ", sorted_list)
+removed_number_last = sorted_list.pop()
+print("The removed item from the sorted list is : ", removed_number_last)
+print("The sorted list after removing the last item is : ", sorted_list)
