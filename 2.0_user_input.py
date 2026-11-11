@@ -26,10 +26,17 @@ DELIVERABLE
     This file, with your comments and your code.
 """
 
-# 1. In:
-# 2. Process:
-# 3. Out:
-# 4. My two fields, and what I would do with them:
+# 1. In: two answers typed by the user: name (text) and age (typed as text, but it is a number)
+# 2. Process: the program keeps both answers. To add 1 to the age, it must be a number, so I use int(). Then, to join the new age with text using +, I change it back into text with str().
+# 3. Out: three lines on the screen: "My name is Lam", "My age is 26",and "My name is Lam and my age is 26" (if I type Lam and 25).
+# 4. My two fields, and what I would do with them: name and age, from a newsletter sign-up form. I would use the name to greet the customer in emails, and the age to put them in the right age group for offers.
 
 
 # Your code below
+name = input("Enter your name:")
+age = int(input("Enter your age:"))
+
+print("My name is ", name )
+print("My age is ", age)
+
+print("My name is " + name + " and my age is " + str(age))
