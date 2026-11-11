@@ -27,39 +27,39 @@ DELIVERABLE
 
 # 1. In: my list of 8 marketing channels from exercise 4.0, written in the code.
 # 2. Process: the program puts the list in four different orders. sorted() and
-#    [::-1] make new lists. .sort() changes a list in place, so I use it on a copy.
-# 3. Out: four lines with the list in four orders, then the original list at
-#    the end, to prove it has not moved.
-# 4. My four orders, and which one modifies the list: A to Z, Z to A, backwards,
-#    and shortest name first. Only .sort() modifies a list in place: that is why
-#    I used it on a copy and not on the original.
+#    [::-1] make new lists and leave the original alone. .sort() changes a list
+#    in place, so I use it only on a copy.
+# 3. Out: four lines with the list in four orders, then the original list on
+#    the last line, to prove it has not moved.
+# 4. My four orders, and which one modifies the list: A to Z, Z to A,
+#    backwards, and shortest name first. Only .sort() modifies a list in place
+#    (like .reverse() and .pop()), so I used it on a copy, not on the original.
 
 
 # Your code below
-number_1 = 2
-number_2 = 4
-number_3 = 6
-number_4 = 8
-number_5 = 10
 
-print("The first number is : ", number_1)
-print("The second number is : ", number_2)
-print("The third number is : ", number_3)
-print("The fourth number is : ", number_4)
-print("The fifth number is : ", number_5)
+# My list from exercise 4.0, in its original order
+channels = ["Social media", "Modern trade", "General trade", "E-commerce",
+            "Email marketing", "Search ads", "TV", "KOL marketing"]
 
-numbers = [3, 5, 7, 9, 11, 13, 15, 17, 1, 2, 4, 6, 8, 10]
-print("The whole list is : ", numbers)
-print("The second item of the list is : ", numbers[1])
-print("The first item of the list is : ", numbers[0])
+# 1. A to Z: sorted() returns a NEW list, the original does not move
+print("A to Z         : ", sorted(channels))
 
-sorted_list = sorted(numbers)
-print("The sorted list is : ",  sorted_list)
+# 2. Z to A: sorted() with reverse=True, also a new list
+print("Z to A         : ", sorted(channels, reverse=True))
 
-removed_number = numbers.pop()
-print("The removed item is : ", removed_number)
-print("The list after removing the last item is : ", numbers)
-print("The sorted list after removing the last item is : ", sorted_list)
-removed_number_last = sorted_list.pop()
-print("The removed item from the sorted list is : ", removed_number_last)
-print("The sorted list after removing the last item is : ", sorted_list)
+# 3. Backwards: [::-1] makes a reversed copy of the original order
+print("Backwards      : ", channels[::-1])
+
+# 4. Shortest name first: .sort() changes a list IN PLACE,
+#    so I make a copy first and sort only the copy
+copy = channels.copy()
+copy.sort(key=len)
+print("Shortest first : ", copy)
+
+# Proof: the last line shows the original list, still in the same order as in 4.0
+print("Original       : ", channels)
+
+# Check: the last line is the same as my list in 4.0, item by item -> yes / no
+# Test: when I wrote channels.sort(key=len) instead of using the copy,
+#       the last line changed to: ...
