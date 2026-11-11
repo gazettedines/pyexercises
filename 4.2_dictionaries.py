@@ -23,10 +23,41 @@ DELIVERABLE
     This file, with your comments and your code.
 """
 
-# 1. In:
-# 2. Process:
-# 3. Out:
-# 4. My object, my five fields, and why those:
+# 1. In: nothing typed by the user. One dictionary written in the code: a
+#    marketing campaign with 5 fields (name, channel, budget, start date, target).
+# 2. Process: the program reads one field, changes the budget, adds the clicks,
+#    removes the start date, then goes through every field with a for loop.
+# 3. Out: the campaign name, then every field with its value, one per line,
+#    and a message for a field that does not exist.
+# 4. My object, my five fields, and why those: a marketing campaign. Name and
+#    channel to know which campaign it is and where it runs, budget to control
+#    the cost, start date to plan it, and target to know who it speaks to.
 
 
 # Your code below
+# A real marketing campaign described with 5 fields
+campaign = {
+    "name": "Winter Sale",
+    "channel": "E-commerce",
+    "budget": 4000,
+    "start_date": "2026-12-01",
+    "target": "Students 18-25",
+}
+
+# Read: show one field
+print("Campaign name:", campaign["name"])
+
+# Change: the budget goes up, and I add a new field for the clicks
+campaign["budget"] = 4500
+campaign["clicks"] = 1200
+
+# Remove: the start date is no longer needed once the campaign has started
+del campaign["start_date"]
+
+# Display every field with its value
+for field, value in campaign.items():
+    print(field, ":", value)
+
+# Ask for a field that does not exist, without crashing:
+# .get() gives a default message instead of an error
+print("Conversions:", campaign.get("conversions", "not recorded"))
