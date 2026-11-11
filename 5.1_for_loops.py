@@ -24,10 +24,28 @@ DELIVERABLE
     This file, with your comments and your code.
 """
 
-# 1. In:
-# 2. Process:
-# 3. Out:
-# 4. What I compute for each item, and why it is worth showing:
+# 1. In: my two lists from exercise 4.0, written in the code: 8 marketing
+#    channels and the budget of each one in €.
+# 2. Process: the program computes the total budget once, then goes through
+#    every channel with a for loop and computes its share of the total in %.
+# 3. Out: 8 lines, one per channel: its position, its name, its budget and
+#    its share of the total budget.
+# 4. What I compute for each item, and why it is worth showing: the share of
+#    the total budget. The reader sees at once which channels take most of the
+#    money, and can ask if those are really the best channels.
 
 
 # Your code below
+# My two lists from exercise 4.0, in the same order
+channels = ["Social media", "Modern trade", "General trade", "E-commerce",
+            "Email marketing", "Search ads", "TV", "KOL marketing"]
+budgets = [3000, 2500, 1800, 4000, 600, 2200, 5000, 1500]
+
+# The total budget, computed once before the loop
+total = sum(budgets)
+
+# For every channel: its position (starting at 1), its name, its budget,
+# and its share of the total budget in %
+for i in range(len(channels)):
+    share = budgets[i] / total * 100
+    print(i + 1, channels[i], ":", budgets[i], "€ =", round(share, 1), "% of the budget")
