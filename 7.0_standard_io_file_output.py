@@ -29,40 +29,68 @@ DELIVERABLE
     This file, plus the CSV your program produced.
 """
 
-# 1. In: four answers typed by the user about one student: first name,
-#    last name, date of birth and student number (all kept as text).
-# 2. Process: the program checks if the CSV file already exists. It opens the
-#    file in "a" mode, which adds at the end instead of erasing. It writes the
-#    header line only the first time, then one line with the four answers
-#    separated by commas.
+# 1. In: four answers typed by the user about one student: first name, last
+#    name, date of birth (DD/MM/YYYY) and student number.
+# 2. Process: each answer is checked by a small function before it is kept:
+#    - is_valid_name: the name is not empty and has no comma (a comma would
+#      add a column and break the CSV),
+#    - is_valid_date: the date has the shape DD/MM/YYYY, with digits only,
+#    - is_valid_number: the student number has digits only.
+#    If an answer fails, ask() shows "Not accepted" and asks again.
+#    Then the program checks if the file already exists, opens it in "a" mode
+#    (add at the end, never erase), writes the header only the first time,
+#    and adds one line with the four answers separated by commas.
 # 3. Out, file name and columns: 7.0_student_data.csv, with the columns
-#    First Name, Last Name, Date of Birth, Student Number. One new line per run.
-# 4. Why these columns, and what this file is for: a list of the students in a
-#    class. With 200 rows, I could find a student by their number, count the
-#    students, or send a birthday message using the date of birth.
-#
-# First run: the file does not exist, so the program writes the header first.
-# Bad value: the program does not check what the user types. An empty name
-# or a wrong date is saved as it is. I accept this for now / I would refuse
-# empty values by ... (quyết định của bạn)
+#    First Name, Last Name, Date of Birth, Student Number. Each run adds one
+#    line, and the header appears only once.
+# 4. Why these columns, and what this file is for: a register of the students
+#    in a class. The student number identifies each student, even when two
+#    have the same name. The date of birth lets me count ages or send a
+#    birthday message. With 200 rows, I could find a student by number, check
+#    for duplicates, or sort the class by last name.
 
 
 # Your code below
 import os
 
-# Ask the user for one student's details
+FILE_NAME = "7.0_student_data.csv"
+
+# A name is accepted if it is not empty and has no comma (a comma would break the CSV)
+def is_valid_name(text):
+    return text != "" and "," not in text
+
+# A date is accepted if it looks like DD/MM/YYYY: three parts, all digits, 2-2-4 long
+def is_valid_date(text):
+    parts = text.split("/")
+    return (len(parts) == 3 and len(parts[0]) == 2 and len(parts[1]) == 2
+            and len(parts[2]) == 4 and parts[0].isdigit() and parts[1].isdigit()
+            and parts[2].isdigit())
+
+# A student number is accepted if it contains only digits
+def is_valid_number(text):
+    return text.isdigit()
+
+# Ask a question again and again until the answer passes its check
+def ask(question, is_valid):
+    answer = input(question).strip()
+    while not is_valid(answer):
+        print("Not accepted, please try again.")
+        answer = input(question).strip()
+    return answer
+
+
+# Ask for one student's details, each one checked
 print("Please fill in the following details:")
-first_name = input("First Name: ")
-last_name = input("Last Name: ")
-birth = input("Date of Birth (DD/MM/YYYY): ")
-student_number = input("Student Number: ")
+first_name = ask("First Name: ", is_valid_name)
+last_name = ask("Last Name: ", is_valid_name)
+birth = ask("Date of Birth (DD/MM/YYYY): ", is_valid_date)
+student_number = ask("Student Number: ", is_valid_number)
 
-# Check if the file already exists BEFORE opening it
-file_exists = os.path.exists("7.0_student_data.csv")
+# Check if the file exists BEFORE opening it, to know if the header is needed
+file_exists = os.path.exists(FILE_NAME)
 
-# "a" adds at the end of the file, so each run adds one line and nothing is erased
-with open("7.0_student_data.csv", "a", newline="") as file:
-    # Write the header only the very first time, when the file does not exist yet
+# "a" adds one line at the end; the header is written only the first time
+with open(FILE_NAME, "a", newline="") as file:
     if not file_exists:
         file.write("First Name,Last Name,Date of Birth,Student Number\n")
     file.write(first_name + "," + last_name + "," + birth + "," + student_number + "\n")
