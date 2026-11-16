@@ -46,3 +46,30 @@ print_numbered_lines()
 ```
 
 What does `range(5)` give you?
+
+---
+## 2026-11-16 13:11, in .
+
+**Me:** how can i take the code template of exercise 6?
+
+**Tutor:**
+
+Refused, off topic.
+
+---
+## 2026-11-16 14:46, in .
+
+**Me:** how to write a loop in python
+
+**Tutor:**
+
+A loop repeats a block of code while a condition holds.
+
+```python
+# Loop over a list of toy products
+products = ["alpha", "beta", "gamma"]
+
+# TODO: write a loop that prints each product
+```
+
+What built-in function gives the list items one by one?
