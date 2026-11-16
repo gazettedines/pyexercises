@@ -29,10 +29,42 @@ DELIVERABLE
     This file, plus the CSV your program produced.
 """
 
-# 1. In:
-# 2. Process:
-# 3. Out, file name and columns:
-# 4. Why these columns, and what this file is for:
+# 1. In: four answers typed by the user about one student: first name,
+#    last name, date of birth and student number (all kept as text).
+# 2. Process: the program checks if the CSV file already exists. It opens the
+#    file in "a" mode, which adds at the end instead of erasing. It writes the
+#    header line only the first time, then one line with the four answers
+#    separated by commas.
+# 3. Out, file name and columns: 7.0_student_data.csv, with the columns
+#    First Name, Last Name, Date of Birth, Student Number. One new line per run.
+# 4. Why these columns, and what this file is for: a list of the students in a
+#    class. With 200 rows, I could find a student by their number, count the
+#    students, or send a birthday message using the date of birth.
+#
+# First run: the file does not exist, so the program writes the header first.
+# Bad value: the program does not check what the user types. An empty name
+# or a wrong date is saved as it is. I accept this for now / I would refuse
+# empty values by ... (quyết định của bạn)
 
 
 # Your code below
+import os
+
+# Ask the user for one student's details
+print("Please fill in the following details:")
+first_name = input("First Name: ")
+last_name = input("Last Name: ")
+birth = input("Date of Birth (DD/MM/YYYY): ")
+student_number = input("Student Number: ")
+
+# Check if the file already exists BEFORE opening it
+file_exists = os.path.exists("7.0_student_data.csv")
+
+# "a" adds at the end of the file, so each run adds one line and nothing is erased
+with open("7.0_student_data.csv", "a", newline="") as file:
+    # Write the header only the very first time, when the file does not exist yet
+    if not file_exists:
+        file.write("First Name,Last Name,Date of Birth,Student Number\n")
+    file.write(first_name + "," + last_name + "," + birth + "," + student_number + "\n")
+
+print("Data saved successfully!")
